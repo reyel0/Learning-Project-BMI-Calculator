@@ -6,6 +6,7 @@ import 'package:bmi_calculator01/icon_content.dart';
 import 'package:bmi_calculator01/reusable_card.dart';
 import 'package:bmi_calculator01/constants.dart';
 import 'package:bmi_calculator01/calculator_brain.dart';
+
 enum Gender {
   male,
   female,
@@ -260,23 +261,39 @@ class _InputPageState extends State<InputPage> {
           ),
           GestureDetector(
             onTap: () {
+              CalculatorBrain cacl =
+                  CalculatorBrain(height: height, weight: weight);
               setState(() {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ResultPage()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ResultPage(
+                              bmiResult: cacl.calculateBMI(),
+                              resultText: cacl.getResult(),
+                              interpretation: cacl.getInterpretation(),
+                            )));
               });
             },
             child: Container(
               child: Center(
-                child: Text("Calculate Your BMI",
-                    style:
-                        TextStyle(fontSize: 33, fontWeight: FontWeight.w600,color: Color(0xff1A2A45),),),
+                child: Text(
+                  "Calculate Your BMI",
+                  style: TextStyle(
+                    fontSize: 33,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xff1A2A45),
+                  ),
+                ),
               ),
               width: double.infinity,
               height: kBottomContainerHeight,
               margin: EdgeInsets.only(top: 10),
               decoration: BoxDecoration(
                 color: kBottomContainerColor,
-                borderRadius: BorderRadius.only(topRight: Radius.circular(25),topLeft: Radius.circular(25),),
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(25),
+                  topLeft: Radius.circular(25),
+                ),
               ),
             ),
           ),
