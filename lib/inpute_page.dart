@@ -22,7 +22,7 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Color maleCardColour = kInactiveCardColour;
   Color femaleCardColour = kInactiveCardColour;
-  double height = 180;
+  final int height = 180;
   int weight = 60;
   int age = 20;
 
@@ -262,7 +262,7 @@ class _InputPageState extends State<InputPage> {
           GestureDetector(
             onTap: () {
               CalculatorBrain cacl =
-                  CalculatorBrain(height: height, weight: weight);
+                  CalculatorBrain(height: height, weight: weight, bmi: , );
               setState(() {
                 Navigator.push(
                     context,
